@@ -14,11 +14,16 @@
  * limitations under the License.
  */
 
+apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 
 android {
     buildToolsVersion "23.0.2"
     compileSdkVersion 23
+
+    dexOptions {
+        preDexLibraries = System.env.BUILD_NUMBER == null
+    }
 
     defaultConfig {
         applicationId "com.google.samples.apps.topeka"
